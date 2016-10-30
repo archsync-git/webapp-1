@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+var sitecongfig =  require('../configReader').configReader();
 var app = require('../app');
 var debug = require('debug')('webapp-1:server');
 var http = require('http');
@@ -12,7 +13,18 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = '3000';
+if(sitecongfig){
+  if(sitecongfig.siteconfig.port !== ''){
+    port = normalizePort(sitecongfig.siteconfig.port);
+    console.log(`Server will be running on user defined port: ${port}`);
+  }else{
+    console.log(`Server will be running on default port: ${port}`);
+  }  
+}else{
+  port = normalizePort(process.env.PORT || '3000');
+  console.log(`Server will be running on default env port: ${port}`);
+}
 app.set('port', port);
 
 /**

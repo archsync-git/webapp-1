@@ -1,0 +1,16 @@
+{
+    "siteconfig":{
+        "port": "3030"
+    },
+    "website":{},
+    "database":{
+        "mysql":{
+            "hotsname":"localhost",
+            "username":"root",
+            "password":"paswwd",
+            "port": "2020",
+            "conntype":"passive"
+        },
+        "mango":{}
+    }
+}
